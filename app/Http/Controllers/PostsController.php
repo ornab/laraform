@@ -46,31 +46,47 @@ class PostsController extends Controller
     
     public function index(){
         
-        return "Its Working Well!";
+        
+        $posts = Post::all();
+        
+        
+        return view('posts.index', compact('posts'));
         
     }
     
-    public function update(Request $request){
+    public function update(Request $request, $id){
         
         
+        
+        $post = Post::findOrFail($id);
+        
+        $post->update($request->all());
+        
+        return redirect('/posts');
         
     }
     
-    public function edit(Request $request){
+    public function edit($id){
         
+        $post = Post::findOrFail($id);
         
+        return view('posts.edit', compact('post'));
         
     }
     
     public function show($id){
         
+        $post = Post::findOrFail($id);
         
+        return view('posts.show', compact('post'));
         
     }
     
-    public function destroy(Request $request){
+    public function destroy($id){
         
+        $post = Post::whereId($id)->delete();
         
+        return redirect('/posts');
         
     }
     
