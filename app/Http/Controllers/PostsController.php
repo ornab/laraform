@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreatePostRequest;
 use App\Post;
 use App\User;
 
@@ -16,7 +17,7 @@ class PostsController extends Controller
     
     
     
-    public function store(Request $request){
+    public function store(CreatePostRequest $request){
         
     //    return $request->get('title');
         
@@ -36,6 +37,17 @@ class PostsController extends Controller
 //        
 //        $post->save();
         
+        
+        
+//        $this->validate($request, [
+//            
+//            'title' => 'required|min:4',
+//            'content' => 'required|min:10'
+//            
+//            
+//        ]);
+        
+         
         
         Post::create($request->all());
         
