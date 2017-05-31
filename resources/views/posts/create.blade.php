@@ -9,22 +9,48 @@
 
       <h1>Create Post</h1>
       
-     <form method="post" action="/posts">
+<!--     <form method="post" action="/posts">-->
+         
+         <div class="container">
+             
+                 <div class="row">
+                   
+                   <div class="col-md-12">
+                     
+                     <div class="form-group">
          
          
-         {!! csrf_field() !!}
+                {!! Form::open(['method'=>'POST', 'action'=> 'PostsController@store']) !!}
          
-         <label>Title</label>
+               {!! csrf_field() !!}
          
-         <input type="text" name="title" placeholder="Enter Title">
-         <input type="textarea" name="content" placeholder="Enter Content">
+          
+             
+             
+             {!! Form::label('title', 'Title:') !!} <br>
+             {!! Form::text('title', null , ['size' =>'33'], ['class'=>'form-control'] ) !!} <br> <br>
+             {!! Form::label('content', 'Content:') !!} <br>
+             {!! Form::textarea('content', null ,['size' =>'30x3'], ['class'=>'form-control'] ) !!} <br> <br> 
+             
+             {!! Form::submit('Create Post', ['class'=>'btn btn-primary'] ) !!} 
+             
+            {!! Form::close() !!} 
+            
+            
+            </div>
+         </div>
+     </div>
+</div>
          
-         <input type="submit" name="submit" value="Submit">
+           
          
          
          
-     </form>
-
+         
+         
+        
+     
+    
 
 
 
